@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         title.style.color = getRandomColor();
     }, 2000);
 
+    // Folosirea setTimeout()
+    setTimeout(() => {
+        title.style.color = "green";
+    }, 5000);
+
+    setTimeout(() => {
+        newParagraph.remove(); // Ștergerea paragrafului
+    }, 10000);
+
     // Folosirea localStorage
     localStorage.setItem('name', 'John');
     let name = localStorage.getItem('name');
@@ -28,6 +37,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Eveniment de mouse
     title.addEventListener('mouseover', (event) => {
         event.target.style.color = "red";
+        console.log('Current Target:', event.currentTarget);
     });
 
     // Eveniment de tastatură
