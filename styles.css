@@ -5,14 +5,32 @@ body {
     padding: 0;
     background-color: #f0f0f0;
     transition: background-color 0.5s ease;
+    font-size: 16px; /* We set the root font-size here */
 }
 
-header, main, footer {
-    padding: 20px;
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+header, main {
+    padding: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
     color: #333;
+    animation: rotate 3600s linear infinite;
 }
 
 p {
@@ -40,9 +58,14 @@ footer {
 
 #menu li a {
     display: block;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     color: #333;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#menu li a:hover {
+    color: #666;
 }
 
 #menu .dropdown {
@@ -51,6 +74,8 @@ footer {
     list-style-type: none;
     padding: 0;
     background-color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 #menu .dropdown li {
@@ -63,10 +88,23 @@ footer {
 
 #menu li:hover .dropdown {
     display: block;
+    opacity: 1;
+}
+
+/* Form styles */
+form {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+label {
+    justify-self: end;
 }
 
 /* Media queries */
-@media (max-width: 600px) {
+@media (max-width: 37.5rem) { /* 600px/16 = 37.5rem */
     body {
         background-color: #333;
         color: #fff;
