@@ -20,20 +20,22 @@ app.use(session({
 }));
 
 // Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 // GET request for the home page
 app.get('/', (req, res) => {
   res.render('index');
 });
 
+// GET request for the form data
+app.get('/submit-form', (req, res) => {
+  res.send('This is an example of GET request.');
+});
+
 // POST request for the form data
 app.post('/submit-form', (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  // Do something with the username and password
-  // For now, just log them
-  console.log(`Username: ${username}, Password: ${password}`);
+  const email = req.body.email;
+  console.log(`Email: ${email}`); 
   res.redirect('/');
 });
 
@@ -49,8 +51,7 @@ app.get('/data', (req, res) => {
 });
 
 // Login endpoint
-app.post('/login', (req, res) => {
-  // In a real app, you'd validate the input and check it against a database
+app.get('/login', (req, res) => {
   req.session.user = req.body.username;
   res.redirect('/');
 });
